@@ -43,7 +43,7 @@ setup(
         "Intended Audience :: Education",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
-        "Topic :: Scientific/Engineering :: Computer Vision",
+        "Topic :: Scientific/Engineering",
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
