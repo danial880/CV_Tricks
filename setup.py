@@ -22,11 +22,11 @@ try:
     print("install_reqs",install_reqs)
 except Exception:
     logging.warning('Fail load requirements file, so using default ones.')
-    install_reqs = ['opencv_contrib_python', 'numpy']
+    install_reqs = ['opencv_contrib_python', 'tqdm', 'setuptools']
 
 setup(
     name='CV_Tricks',
-    version='0.0.1',
+    version='0.0.2',
     url='https://github.com/danial880/CV_Tricks',
     author='Danial',
     author_email='danialkhan1594@gmail.com',
@@ -36,17 +36,17 @@ setup(
     scripts=["CV_Tricks/img_frm_vid.py"],
     install_requires=install_reqs,
     include_package_data=True,
-    python_requires='>=3.6',
+    python_requires='>=3.7',
     classifiers=[
-        "Development Status :: 2 - Pre-Alpha",
+        "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "Intended Audience :: Education",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
         "Topic :: Scientific/Engineering",
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
     ],
     keywords="ComputerVision",
 )

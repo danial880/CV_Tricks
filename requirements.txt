@@ -1,2 +1,3 @@
-numpy==1.19.1
 opencv_contrib_python==4.5.4.60
+setuptools==60.5.0
+tqdm==4.62.3
