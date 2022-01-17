@@ -23,16 +23,19 @@ try:
 except Exception:
     logging.warning('Fail load requirements file, so using default ones.')
     install_reqs = ['opencv_contrib_python', 'tqdm', 'setuptools']
+with open('README.md') as f:
+    long_description = f.read()
 
 setup(
     name='CV_Tricks',
-    version='0.0.3',
+    version='0.0.4',
     url='https://github.com/danial880/CV_Tricks',
     author='Danial',
     author_email='danialkhan1594@gmail.com',
     license='MIT',
     description='Tricks for Computer Vision Developers',
-    readme="README.md",
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     packages=["CV_Tricks"],
     scripts=["CV_Tricks/img_frm_vid.py"],
     install_requires=install_reqs,
