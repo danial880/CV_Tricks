@@ -32,6 +32,7 @@ setup(
     author_email='danialkhan1594@gmail.com',
     license='MIT',
     description='Tricks for Computer Vision Developers',
+    readme="README.md",
     packages=["CV_Tricks"],
     scripts=["CV_Tricks/img_frm_vid.py"],
     install_requires=install_reqs,
