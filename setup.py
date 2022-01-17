@@ -26,7 +26,7 @@ except Exception:
 
 setup(
     name='CV_Tricks',
-    version='0.0.2',
+    version='0.0.3',
     url='https://github.com/danial880/CV_Tricks',
     author='Danial',
     author_email='danialkhan1594@gmail.com',
