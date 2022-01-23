@@ -29,7 +29,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-f","--file", required=True, type=str,
     	help="Video File")
-    parser.add_argument("-d","--dir", required=True, type=str,
+    parser.add_argument("-d","--dir", default="images", type=str,
         help="Directory for saving images")
     args = parser.parse_args()
     writer = ImgFrmVid(args.file,args.dir)
