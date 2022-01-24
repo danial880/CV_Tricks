@@ -1,7 +1,9 @@
 #!/usr/bin/env python
-import sys, argparse
-import cv2
-from os import mkdir, path
+from sys import exit 
+from argparse import ArgumentParser
+from cv2 import VideoCapture, imwrite, CAP_PROP_FRAME_COUNT
+from os import mkdir
+from os.path import join, isdir
 from dataclasses import dataclass
 from tqdm import tqdm
 
@@ -11,22 +13,20 @@ class ImgFrmVid:
     save_dir: str
 
     def img_frm_video (self):
-        cap = cv2.VideoCapture(self.video_name)
-        print('Reading video file')
-        if not path.isdir(self.save_dir):
+        cap = VideoCapture(self.video_name)
+        if not isdir(self.save_dir):
             mkdir(self.save_dir)
-        frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        frame_count = int(cap.get(CAP_PROP_FRAME_COUNT))
         if frame_count == 0:
-            sys.exit("Unable to read the video file")
-        for i in tqdm(range(frame_count), desc ="Extracted Frames"):
+            exit("Video file not found")
+        for i in tqdm(range(frame_count), desc ="Extracting"):
             ret, img = cap.read()
             if ret:
-                cv2.imwrite(path.join(self.save_dir,'image%d.jpg' %i), img)
-        print("Done")
+                imwrite(join(self.save_dir,'image%d.jpg' %i), img)
         cap.release()
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+    parser = ArgumentParser()
     parser.add_argument("-f","--file", required=True, type=str,
     	help="Video File")
     parser.add_argument("-d","--dir", default="images", type=str,

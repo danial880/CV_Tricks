@@ -16,23 +16,25 @@ class ImgToVid:
 	fps: str
 	size: tuple
 
-	def sort_files(value):
-    	num = compile(r'(\d+)')
-    	chunks = num.split(value)
-    	chunks[1::2] = map(int, chunks[1::2])
-    	return chunks
+	def sort_files(self, value):
+		num = compile(r'(\d+)')
+		chunks = num.split(value)
+		chunks[1::2] = map(int, chunks[1::2])
+		return chunks
 
 	def img_to_video(self):
-	    frame_array = []
 	    codec = VideoWriter_fourcc(*'XVID')
 	    video_name = self.name + "." + self.extension
 	    writer = VideoWriter(video_name, codec, self.fps, self.size)
-	    files = [file for file in listdir(self.img_dir) 
+	    try:
+	    	files = [file for file in listdir(self.img_dir) 
 	    			if isfile(join(self.img_dir, file))]
-	    files.sort(key = sort_files)
+	    except Exception as e :
+	    	exit(e)
+	    files.sort(key = self.sort_files)
 	    if len(files) == 0:
-	    	exit("Unable to read {}".format(self.img_dir))
-	    for i in tqdm(range(len(files)), desc ="Progress"):
+	    	exit("{} not found!!!".format(self.img_dir))
+	    for i in tqdm(range(len(files)), desc ="Making"):
 	        filename = self.img_dir + "/" + files[i]
 	        img = imread(filename)
 	        img = resize(img, self.size)
@@ -50,7 +52,7 @@ if __name__ == "__main__":
     parser.add_argument("--fps", default=25, type=str,
     	help="Frame rate")
     parser.add_argument("-s","--size", default=(640,480), type=str,
-    	help="Frame size of video")
+    	help="Custom frame size of video")
     args = parser.parse_args()
     writer = ImgToVid(args.file, args.name, args.extension, args.fps, args.size)
     writer.img_to_video()
