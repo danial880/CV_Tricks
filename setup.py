@@ -28,7 +28,7 @@ with open('README.md') as f:
 
 setup(
     name='CV_Tricks',
-    version='0.0.4',
+    version='0.0.5',
     url='https://github.com/danial880/CV_Tricks',
     author='Danial',
     author_email='danialkhan1594@gmail.com',
@@ -37,7 +37,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     packages=["CV_Tricks"],
-    scripts=["CV_Tricks/img_frm_vid.py"],
+    scripts=["CV_Tricks/img_frm_vid.py","CV_Tricks/img_to_vid.py"],
     install_requires=install_reqs,
     include_package_data=True,
     python_requires='>=3.7',
